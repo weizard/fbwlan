@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../tokens.php');
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once "templates/base.php";
+require_once __DIR__ . '/../include/google-api-php-client/vendor/autoload.php';
+require_once __DIR__ . '/../include/google-api-php-client/examples/templates/base.php';
 
 function google_checkin(){
 	$client = new Google_Client();
