@@ -34,7 +34,7 @@ function google_checkin(){
 
 function google_login(){
 	// google login 
-	$_SERVER['HTTP_HOST'] . "/oauth2callback.php"; 
+	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin.php"; 
 	$client = new Google_Client();
 	$client->setAuthConfig($oauth_credentials);
 	$client->setRedirectUri($redirect_uri);
