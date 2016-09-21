@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="pure-u-1 pure-u-md-1-2">
-            <?php echo $access_code_widget ?>
+            <?php //echo $access_code_widget ?>
         </div>
     </div>
 
