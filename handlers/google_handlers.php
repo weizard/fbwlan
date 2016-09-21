@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/../tokens.php');
 require_once __DIR__ . '/../include/google-api-php-client/vendor/autoload.php';
 require_once __DIR__ . '/../include/google-api-php-client/examples/templates/base.php';
-require_once __DIR__ . './fb_handlers.php';
+require_once __DIR__ . '/fb_handlers.php';
 
 // Flight::set('retry_url', MY_URL .'login');
 
