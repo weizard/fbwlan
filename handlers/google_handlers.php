@@ -7,11 +7,18 @@ echo "1<br>";
 if (!$oauth_credentials = getOAuthCredentialsFile()) {
 	echo "2<br>";
 	echo $oauth_credentials."<br>";
-  echo missingOAuth2CredentialsWarning();
-  return;
+	echo missingOAuth2CredentialsWarning();
+	return;
 }
 
 function google_checkin(){
+	echo "1<br>";
+	if (!$oauth_credentials = getOAuthCredentialsFile()) {
+		echo "2<br>";
+		echo $oauth_credentials."<br>";
+		echo missingOAuth2CredentialsWarning();
+		return;
+	}
 	$client = new Google_Client();
 	$client->setAuthConfig($oauth_credentials);
 	$client->setScopes('email');
@@ -36,6 +43,13 @@ function google_checkin(){
 }
 
 function google_login(){
+	echo "1<br>";
+	if (!$oauth_credentials = getOAuthCredentialsFile()) {
+		echo "2<br>";
+		echo $oauth_credentials."<br>";
+		echo missingOAuth2CredentialsWarning();
+		return;
+	}
 	// google login 
 	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin.php"; 
 	$client = new Google_Client();
