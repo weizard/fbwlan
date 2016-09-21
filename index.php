@@ -60,7 +60,7 @@ require_once('tokens.php');
 init_token_db();
 
 require_once('handlers/fb_handlers.php');
-require_once('handlers/google_handlers.php');
+// require_once('handlers/google_handlers.php');
 
 
 Flight::route('/', 'handle_root');
@@ -71,6 +71,7 @@ Flight::route('/access_code', 'handle_access_code');
 Flight::route('/privacy', 'handle_privacy');
 Flight::route('/rerequest_permission/', 'handle_rerequest_permission');
 
+require_once('handlers/google_handlers.php');
 Flight::route('/google_login', 'google_login');
 Flight::route('/googlecheckin', 'google_checkin');
 
