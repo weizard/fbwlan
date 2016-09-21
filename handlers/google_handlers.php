@@ -69,6 +69,9 @@ function google_checkin(){
 }
 
 function google_login(){
+	if (!is_session_valid()) {
+        Flight::error(new Exception('Gateway parameters not set in login handler!'));
+    }
 	if (!$oauth_credentials = getOAuthCredentialsFile()) {
 		echo missingOAuth2CredentialsWarning();
 		return;
