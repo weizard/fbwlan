@@ -69,6 +69,8 @@ function google_checkin(){
 }
 
 function google_login(){
+	$request = Flight::request();
+	update_session($request);
 	if (!is_session_valid()) {
         Flight::error(new Exception('Gateway parameters not set in login handler!'));
     }
