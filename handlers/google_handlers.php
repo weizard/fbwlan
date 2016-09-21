@@ -3,6 +3,34 @@ require_once(__DIR__ . '/../tokens.php');
 require_once __DIR__ . '/../include/google-api-php-client/vendor/autoload.php';
 require_once __DIR__ . '/../include/google-api-php-client/examples/templates/base.php';
 
+Flight::set('retry_url', MY_URL .'login');
+
+
+function render_boilerplate() {
+    Flight::render('head',
+        array(
+            'my_url' => MY_URL,
+            'title' => _('WLAN at ') . PAGE_NAME,
+        ),
+        'head');
+    Flight::render('foot',
+        array(
+            'privacy_url' => MY_URL . 'privacy/',
+            'imprint_url' => IMPRINT_URL,
+        ),
+        'foot');
+    Flight::render('back_to_code_widget',
+        array(
+            'retry_url' => Flight::get('retry_url'),
+        ),
+        'back_to_code_widget');
+    Flight::render('access_code_widget',
+        array(
+            'codeurl' => MY_URL . 'access_code/',
+        ),
+        'access_code_widget');
+}
+
 echo "1<br>";
 if (!$oauth_credentials = getOAuthCredentialsFile()) {
 	echo "2<br>";
@@ -72,16 +100,36 @@ function google_login(){
         ));
 }
 
-// function login_success($redirect = True) {
-//     //  http://" . $gw_address . ":" . $gw_port . "/wifidog/auth?token=" . $token
-//     $token = make_token();
-//     $url = 'http://' . $_SESSION['gw_address'] . ':'
-//         . $_SESSION['gw_port'] . '/wifidog/auth?token=' . $token;
-//     if ($redirect) {
-//         Flight::redirect($url);
-//     } else {
-//         return $url;
-//     }
-// }
+function login_success($redirect = True) {
+    //  http://" . $gw_address . ":" . $gw_port . "/wifidog/auth?token=" . $token
+    $token = make_token();
+    $url = 'http://' . $_SESSION['gw_address'] . ':'
+        . $_SESSION['gw_port'] . '/wifidog/auth?token=' . $token;
+    if ($redirect) {
+        Flight::redirect($url);
+    } else {
+        return $url;
+    }
+}
+
+function handle_access_code() {
+
+    render_boilerplate();
+    $request = Flight::request();
+    $code = $request->query->access_code;
+    $code = strtolower(trim($code));
+
+    if (empty($code)) {
+        Flight::render('denied_code', array(
+            'msg' => _('No access code sent.'),
+        ));
+    } else if ($code != ACCESS_CODE) {
+        Flight::render('denied_code', array(
+            'msg' => _('Wrong access code.'),
+        ));
+    } else {
+        login_success();
+    }
+}
 
 ?>
