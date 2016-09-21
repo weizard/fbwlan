@@ -37,7 +37,7 @@ if (!$oauth_credentials = getOAuthCredentialsFile()) {
 	return;
 }
 
-$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin"; 
+// $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin"; 
 
 function google_checkin(){
 	if (!$oauth_credentials = getOAuthCredentialsFile()) {
@@ -47,7 +47,7 @@ function google_checkin(){
 	$client = new Google_Client();
 	$client->setAuthConfig($oauth_credentials);
 	$client->setScopes('email');
-
+	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin"; 
 	if (isset($_GET['code'])) {
 	  $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 	  $client->setAccessToken($token);
@@ -74,7 +74,7 @@ function google_login(){
 		return;
 	}
 	// google login 
-	// $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin"; 
+	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . "/googlecheckin"; 
 	$client = new Google_Client();
 	$client->setAuthConfig($oauth_credentials);
 	$client->setRedirectUri($redirect_uri);
