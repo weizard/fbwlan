@@ -70,6 +70,7 @@ Flight::route('/checkin', 'handle_checkin');
 Flight::route('/access_code', 'handle_access_code');
 Flight::route('/privacy', 'handle_privacy');
 Flight::route('/rerequest_permission/', 'handle_rerequest_permission');
+
 Flight::route('/google_login', 'google_login');
 Flight::route('/googlecheckin', 'google_checkin');
 
