@@ -3,7 +3,10 @@ require_once(__DIR__ . '/../tokens.php');
 require_once __DIR__ . '/../include/google-api-php-client/vendor/autoload.php';
 require_once __DIR__ . '/../include/google-api-php-client/examples/templates/base.php';
 
+echo "1<br>";
 if (!$oauth_credentials = getOAuthCredentialsFile()) {
+	echo "2<br>";
+	echo $oauth_credentials."<br>";
   echo missingOAuth2CredentialsWarning();
   return;
 }
