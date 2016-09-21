@@ -112,24 +112,24 @@ function login_success($redirect = True) {
     }
 }
 
-function handle_access_code() {
+// function handle_access_code() {
 
-    render_boilerplate();
-    $request = Flight::request();
-    $code = $request->query->access_code;
-    $code = strtolower(trim($code));
+//     render_boilerplate();
+//     $request = Flight::request();
+//     $code = $request->query->access_code;
+//     $code = strtolower(trim($code));
 
-    if (empty($code)) {
-        Flight::render('denied_code', array(
-            'msg' => _('No access code sent.'),
-        ));
-    } else if ($code != ACCESS_CODE) {
-        Flight::render('denied_code', array(
-            'msg' => _('Wrong access code.'),
-        ));
-    } else {
-        login_success();
-    }
-}
+//     if (empty($code)) {
+//         Flight::render('denied_code', array(
+//             'msg' => _('No access code sent.'),
+//         ));
+//     } else if ($code != ACCESS_CODE) {
+//         Flight::render('denied_code', array(
+//             'msg' => _('Wrong access code.'),
+//         ));
+//     } else {
+//         login_success();
+//     }
+// }
 
 ?>
