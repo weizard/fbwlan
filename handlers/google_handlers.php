@@ -50,16 +50,16 @@ function google_login(){
         ));
 }
 
-function login_success($redirect = True) {
-    //  http://" . $gw_address . ":" . $gw_port . "/wifidog/auth?token=" . $token
-    $token = make_token();
-    $url = 'http://' . $_SESSION['gw_address'] . ':'
-        . $_SESSION['gw_port'] . '/wifidog/auth?token=' . $token;
-    if ($redirect) {
-        Flight::redirect($url);
-    } else {
-        return $url;
-    }
-}
+// function login_success($redirect = True) {
+//     //  http://" . $gw_address . ":" . $gw_port . "/wifidog/auth?token=" . $token
+//     $token = make_token();
+//     $url = 'http://' . $_SESSION['gw_address'] . ':'
+//         . $_SESSION['gw_port'] . '/wifidog/auth?token=' . $token;
+//     if ($redirect) {
+//         Flight::redirect($url);
+//     } else {
+//         return $url;
+//     }
+// }
 
 ?>
