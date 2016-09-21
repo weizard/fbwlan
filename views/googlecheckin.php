@@ -1,5 +1,4 @@
-
-<?php echo $head; ?>
+<?php //echo $head; ?>
     <div class="centered-row">
         <div class="l-box">
             <h2><?php echo _('Facebook post successful!') ?></h2>
@@ -41,4 +40,4 @@
         
     </div>
 
-<?php echo $foot; ?>
+<?php //echo $foot; ?>
